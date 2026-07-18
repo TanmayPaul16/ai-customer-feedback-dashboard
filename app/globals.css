@@ -26,23 +26,49 @@ main { min-height:100vh; }
 .toast { position:fixed; top:82px; left:50%; transform:translateX(-50%); z-index:20; padding:11px 17px; border-radius:9px; background:#18243b; color:#fff; font-size:11px; box-shadow:0 8px 24px #17243d40; animation:drop .25s ease; } @keyframes drop { from { opacity:0; transform:translate(-50%,-8px); } }
 footer { max-width:1420px; margin:auto; padding:0 42px 22px; display:flex; justify-content:space-between; color:#9299aa; font-size:9px; }
 
-/* Readability pass: keep supporting information legible on ordinary laptop screens. */
-.status,.button,.page-head p,.range { font-size:13px; }
-.metric span { font-size:12px; }
-.metric p { font-size:11px; line-height:1.45; }
-.panel-head h2,.table-title h2 { font-size:16px; }
-.panel-head p,.table-title p { font-size:11px; line-height:1.4; }
-.ai-pill { font-size:10px; }
-.legend>div,.topic-bar { font-size:11px; }
-.action b { font-size:11px; }
-.action p { font-size:10px; line-height:1.45; }
-.action em { font-size:8px; }
-.table-title>span,.search input,.toolbar select,.clear { font-size:11px; }
-th { font-size:9px; }
-td { font-size:10px; }
-.customer b { font-size:11px; }
-.customer p { font-size:10px; line-height:1.4; }
-.tag,.topic-tag,.urgency { font-size:9px; }
-footer { font-size:10px; }
+/* Large-screen readability: this is a working dashboard, not a miniature mockup. */
+.page-head,.metrics,.insights-grid,footer { max-width:1680px; }
+.feedback-panel { max-width:1596px; }
+.topbar { height:76px; padding-left:max(42px,calc((100vw - 1596px)/2)); padding-right:max(42px,calc((100vw - 1596px)/2)); }
+.brand { font-size:22px; }
+.brand-mark { width:36px; height:36px; font-size:19px; }
+.status,.button,.page-head p,.range { font-size:14px; }
+.button { height:42px; padding:0 18px; }
+.page-head h1 { font-size:34px; }
+.eyebrow { font-size:12px!important; }
+.metric { padding:22px; }
+.metric span { font-size:14px; }
+.metric strong { font-size:30px; }
+.metric strong.theme-name { font-size:25px; }
+.metric p { font-size:13px; line-height:1.5; }
+.panel { padding:22px; }
+.panel-head h2,.table-title h2 { font-size:19px; }
+.panel-head p,.table-title p { font-size:13px; line-height:1.5; }
+.ai-pill { font-size:11px; }
+.donut-row { min-height:210px; }
+.donut { width:145px; height:145px; }
+.donut>div { width:94px; height:94px; }
+.donut strong { font-size:27px; }
+.donut span { font-size:11px; }
+.legend { min-width:150px; }
+.legend>div,.topic-bar { font-size:13px; }
+.topic-bar { grid-template-columns:105px 1fr 28px 48px; }
+.action { padding:14px; }
+.action b { font-size:13px; }
+.action p { font-size:12px; line-height:1.5; }
+.action em { font-size:10px; }
+.table-title { padding:24px; }
+.table-title>span,.search input,.toolbar select,.clear { font-size:14px; }
+.toolbar { padding:16px 24px; gap:12px; }
+.search { width:320px; height:42px; padding:0 14px; }
+.toolbar select { min-height:42px; padding-left:14px; }
+th { padding:14px 22px; font-size:11px; }
+td { padding:16px 22px; font-size:13px; }
+.customer { max-width:700px; }
+.customer>span { width:36px; height:36px; min-width:36px; font-size:14px; }
+.customer b { font-size:14px; }
+.customer p { max-width:650px; font-size:13px; line-height:1.5; }
+.tag,.topic-tag,.urgency { padding:6px 9px; font-size:11px; }
+footer { font-size:12px; }
 @media (max-width:1050px) { .metrics { grid-template-columns:repeat(2,1fr); }.insights-grid { grid-template-columns:1fr 1fr; }.action-panel { grid-column:span 2; }.feedback-panel { margin-left:42px; margin-right:42px; } }
-@media (max-width:700px) { .topbar { padding:0 18px; }.status,.button.ghost { display:none; }.brand { font-size:18px; }.button.primary { padding:0 12px; }.page-head { padding:25px 18px 18px; align-items:stretch; flex-direction:column; gap:16px; }.page-head h1 { font-size:26px; line-height:1.18; }.page-head p { line-height:1.55; }.range { width:100%; min-width:0; }.metrics,.insights-grid { padding-left:18px; padding-right:18px; grid-template-columns:1fr; }.action-panel { grid-column:auto; }.feedback-panel { margin-left:18px; margin-right:18px; }.toolbar { flex-wrap:wrap; }.search { width:100%; }.toolbar select { flex:1; min-height:34px; }.clear { margin-left:0; min-height:34px; }.donut-row { justify-content:space-evenly; } footer { padding:0 18px 20px; flex-direction:column; gap:5px; } }
+@media (max-width:700px) { .topbar { height:70px; padding:0 18px; }.status,.button.ghost { display:none; }.brand { font-size:18px; }.brand-mark { width:31px; height:31px; font-size:17px; }.button { height:38px; }.button.primary { padding:0 12px; }.page-head { padding:25px 18px 18px; align-items:stretch; flex-direction:column; gap:16px; }.page-head h1 { font-size:26px; line-height:1.18; }.eyebrow { font-size:10px!important; }.page-head p { font-size:13px; line-height:1.55; }.range { width:100%; min-width:0; }.metrics,.insights-grid { padding-left:18px; padding-right:18px; grid-template-columns:1fr; }.metric { padding:20px; }.action-panel { grid-column:auto; }.feedback-panel { margin-left:18px; margin-right:18px; }.panel { padding:18px; }.feedback-panel { padding:0; }.toolbar { flex-wrap:wrap; padding:12px 18px; }.search { width:100%; }.toolbar select { flex:1; min-height:38px; }.clear { margin-left:0; min-height:38px; }.donut-row { justify-content:space-evenly; } footer { padding:0 18px 20px; flex-direction:column; gap:5px; } }
