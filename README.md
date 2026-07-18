@@ -1,98 +1,109 @@
-# vinext-starter
+# Pulseboard AI — Customer Feedback Intelligence Dashboard
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+An interview-ready business intelligence application that turns unstructured customer feedback into clear themes, priorities, and recommended actions.
 
-## Prerequisites
+**[View the live application](https://pulseboard-ai-feedback.paultanmay226.chatgpt.site)**
 
-- Node.js `>=22.13.0`
+## Overview
 
-## Quick Start
+Customer feedback often arrives through surveys, support tickets, email, app-store reviews, and social media. Reviewing this information manually is slow and makes recurring problems difficult to spot.
+
+Pulseboard AI provides a single dashboard that:
+
+- classifies feedback as positive, neutral, or negative;
+- identifies the main business topic in every comment;
+- assigns an urgency level to help teams prioritize responses;
+- summarizes common themes and sentiment distribution;
+- generates recommended business actions;
+- supports CSV upload, search, filters, and analyzed-data export.
+
+The demonstration runs locally in the browser and does not require an API key, making it reliable for interviews and portfolio reviews.
+
+## Key Features
+
+- **Executive overview:** Total feedback, positive-sentiment rate, urgent cases, and the leading conversation theme.
+- **Sentiment analysis:** Visual breakdown of positive, neutral, and negative feedback.
+- **Theme discovery:** Keyword-based classification across billing, delivery, reliability, account access, support, performance, onboarding, and features.
+- **Urgency detection:** Critical, high, medium, and low priority tagging.
+- **Recommended actions:** Automatically prioritized opportunities based on the analyzed dataset.
+- **Feedback explorer:** Full-text search and filters for sentiment and topic.
+- **CSV workflow:** Upload feedback for analysis and export enriched results as CSV.
+- **Responsive interface:** Designed for desktop, tablet, and mobile viewing.
+
+## Technology Stack
+
+- React 19
+- TypeScript
+- Next.js-compatible application structure
+- Vinext and Vite
+- CSS data visualizations
+- Cloudflare-compatible deployment output
+
+## How It Works
+
+```text
+CSV feedback
+     ↓
+Text normalization
+     ↓
+Sentiment + topic + urgency classification
+     ↓
+Metrics, visual summaries, and recommended actions
+     ↓
+Searchable dashboard + enriched CSV export
+```
+
+## Run Locally
+
+### Prerequisites
+
+- Node.js 22.13 or newer
+- npm
+
+### Installation
 
 ```bash
-npm install
+git clone https://github.com/TanmayPaul16/ai-customer-feedback-dashboard.git
+cd ai-customer-feedback-dashboard
+npm ci
 npm run dev
+```
+
+Open the local address printed in the terminal.
+
+### Production Build
+
+```bash
 npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+## CSV Format
 
-## Included Shape
+Upload a CSV containing a column named `feedback`, `review`, `comment`, `text`, or `message`.
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```csv
+feedback
+"The support team resolved my problem quickly."
+"My refund is still pending after five days."
+"The reporting page is useful but needs more export formats."
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+If the file has no recognized header, the application analyzes the first column.
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+## Business Value
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+This prototype shows how an organization can reduce manual feedback review, surface high-risk customer issues earlier, and give business teams a shared view of customer priorities. The approach can be adapted for retail, banking, manufacturing, healthcare, CPG, and other customer-focused industries.
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+## Future Enhancements
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+- Replace heuristic classification with a hosted LLM or fine-tuned model.
+- Add persistent storage and historical trend comparison.
+- Connect directly to support, survey, and social-media platforms.
+- Introduce multilingual analysis and automated alerts.
+- Add human review and classification-confidence controls.
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+## Author
 
-## Useful Commands
+**Tanmay Paul**
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+Built as a portfolio project demonstrating rapid AI prototyping, business problem solving, dashboard development, and production deployment.
