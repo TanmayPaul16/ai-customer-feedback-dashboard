@@ -42,7 +42,8 @@ footer { max-width:1420px; margin:auto; padding:0 42px 22px; display:flex; justi
 .metric strong.theme-name { font-size:25px; }
 .metric p { font-size:13px; line-height:1.5; }
 .panel { padding:22px; }
-.panel-head h2,.table-title h2 { font-size:19px; }
+.panel-head h2 { font-size:19px; }
+.table-title h2 { font-size:22px; }
 .panel-head p,.table-title p { font-size:13px; line-height:1.5; }
 .ai-pill { font-size:11px; }
 .donut-row { min-height:210px; }
@@ -58,17 +59,18 @@ footer { max-width:1420px; margin:auto; padding:0 42px 22px; display:flex; justi
 .action p { font-size:12px; line-height:1.5; }
 .action em { font-size:10px; }
 .table-title { padding:24px; }
-.table-title>span,.search input,.toolbar select,.clear { font-size:14px; }
+.table-title p,.table-title>span { font-size:15px; }
+.search input,.toolbar select,.clear { font-size:16px; }
 .toolbar { padding:16px 24px; gap:12px; }
 .search { width:320px; height:42px; padding:0 14px; }
 .toolbar select { min-height:42px; padding-left:14px; }
-th { padding:14px 22px; font-size:11px; }
-td { padding:16px 22px; font-size:13px; }
+th { padding:15px 22px; font-size:13px; }
+td { padding:18px 22px; font-size:15px; }
 .customer { max-width:700px; }
 .customer>span { width:36px; height:36px; min-width:36px; font-size:14px; }
-.customer b { font-size:14px; }
-.customer p { max-width:650px; font-size:13px; line-height:1.5; }
-.tag,.topic-tag,.urgency { padding:6px 9px; font-size:11px; }
+.customer b { font-size:16px; }
+.customer p { max-width:650px; font-size:15px; line-height:1.5; }
+.tag,.topic-tag,.urgency { padding:7px 10px; font-size:13px; }
 footer { font-size:12px; }
 @media (max-width:1050px) { .metrics { grid-template-columns:repeat(2,1fr); }.insights-grid { grid-template-columns:1fr 1fr; }.action-panel { grid-column:span 2; }.feedback-panel { margin-left:42px; margin-right:42px; } }
 @media (max-width:700px) { .topbar { height:70px; padding:0 18px; }.status,.button.ghost { display:none; }.brand { font-size:18px; }.brand-mark { width:31px; height:31px; font-size:17px; }.button { height:38px; }.button.primary { padding:0 12px; }.page-head { padding:25px 18px 18px; align-items:stretch; flex-direction:column; gap:16px; }.page-head h1 { font-size:26px; line-height:1.18; }.eyebrow { font-size:10px!important; }.page-head p { font-size:13px; line-height:1.55; }.range { width:100%; min-width:0; }.metrics,.insights-grid { padding-left:18px; padding-right:18px; grid-template-columns:1fr; }.metric { padding:20px; }.action-panel { grid-column:auto; }.feedback-panel { margin-left:18px; margin-right:18px; }.panel { padding:18px; }.feedback-panel { padding:0; }.toolbar { flex-wrap:wrap; padding:12px 18px; }.search { width:100%; }.toolbar select { flex:1; min-height:38px; }.clear { margin-left:0; min-height:38px; }.donut-row { justify-content:space-evenly; } footer { padding:0 18px 20px; flex-direction:column; gap:5px; } }
